@@ -1,0 +1,7 @@
+/node_modules
+/bower_components
+/build
+/coverage
+/idea
+/flow-typed
+./DS-Store

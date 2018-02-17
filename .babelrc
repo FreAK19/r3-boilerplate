@@ -1,0 +1,31 @@
+{
+  "presets": [
+    [
+      "@babel/preset-es2015",
+      {
+        "modules": false
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "babel-plugin-transform-class-properties"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
+    },
+    "server": {
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
+    }
+  }
+}
