@@ -9,10 +9,10 @@ export default class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <React.Fragment>
+        <>
           <Logo />
-          <h1>Hello world</h1>
-        </React.Fragment>
+          <h1>Start coding now</h1>
+        </>
       </MuiThemeProvider>
     );
   }
