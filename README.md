@@ -1,9 +1,9 @@
-## react-redux-router-boilerplate
+# react-redux-router-boilerplate
 This project is actually created for my personal use,
  not as a new annoying react boilerplate.
 But if you like my project and want to use it, all is up to you. 
 
-###Instructions
+### Instructions
 This boilerplate is used for small and non-large application,
  include Hot Module Replacement out of the box,
 redux store, and routing for react app, plus Material-ui react components. Use beta version of @babel/core
@@ -16,12 +16,12 @@ Linting with
 [eslint](https://www.npmjs.com/package/eslint) + 
 [config-react](https://www.npmjs.com/package/eslint-config-react) + 
 [config airbnb](https://www.npmjs.com/package/eslint-config-airbnb).
-###Installation
+### Installation
 ```
 git clone https://github.com/FreAK19/r3-boilerplate.git
 yarn install        // install all dependencies
 ```
-###Commands
+### Commands
 ```
 yarn start      //  open browser and go to localhost:8080
 yarn build      //  build production version
@@ -32,7 +32,7 @@ yarn format      //  prettier format for clean code
 yarn test      //  jest, enzyme test
 yarn test:coverage      //  jest test coverage
 ```
-###Structure folder
+### Structure folder
 Basic setup
 ```
 build/
