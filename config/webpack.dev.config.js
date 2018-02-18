@@ -6,8 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devtool: "cheap-module-source-map",
   output: {
-    filename: '[name].bundle.js',
-    publicPath: "/public/"
+    filename: './public/[name].bundle.js',
+    publicPath: ""
   },
   module: {
     rules: [
@@ -47,7 +47,7 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     hot: true,
-    open: false,
+    open: true,
     historyApiFallback: true,
     overlay: {
       errors: true,
@@ -61,6 +61,11 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
+      }
+    }),
     new HtmlWebpackPlugin({
       inject: true,
       template: './index.html',

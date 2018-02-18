@@ -11,7 +11,9 @@
   ],
   "plugins": [
     "react-hot-loader/babel",
-    "babel-plugin-transform-class-properties"
+    "@babel/plugin-proposal-object-rest-spread",
+    "babel-plugin-transform-class-properties",
+    "syntax-dynamic-import"
   ],
   "env": {
     "test": {
