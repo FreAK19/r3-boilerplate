@@ -23,14 +23,14 @@ yarn install        // install all dependencies
 ```
 ### Commands
 ```
-yarn start      //  open browser and go to localhost:8080
-yarn build      //  build production version
-yarn lint      //  eslinting
-yarn flow      //  check flow error
-yarn flow-typed      //  install all flow-typed pkgs
-yarn format      //  prettier format for clean code
-yarn test      //  jest, enzyme test
-yarn test:coverage      //  jest test coverage
+yarn start      		//  open browser and go to localhost:8080
+yarn build      		//  build production version
+yarn lint      			//  eslinting
+yarn flow      			//  check flow error
+yarn flow-typed     //  install all flow-typed pkgs
+yarn format      		//  prettier format for clean code
+yarn test      			//  jest, enzyme test
+yarn test:coverage  //  jest test coverage
 ```
 ### Structure folder
 Basic setup
@@ -68,7 +68,7 @@ src/
 ```
 ### Todo
 Server Side Rendering React...
-###Extended
+### Extended
 If you want to use [preact-compat](https://www.npmjs.com/package/preact-compat), for smaller bundle size, all you need to do
 is install [preact](https://www.npmjs.com/package/preact) and [preact-compat](https://www.npmjs.com/package/preact-compat) 
 packages to dependencies, then change configuration
@@ -81,4 +81,7 @@ resolve: {
     }
 }
 ```
+
+### LICENSE
+MIT
 
