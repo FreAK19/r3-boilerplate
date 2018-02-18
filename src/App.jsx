@@ -1,18 +1,25 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Logo from './components/Logo/Logo';
-import './App.less'
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import Home from './routes/home';
+import './App.less';
+import store from './store';
 
+console.log(store)
 export default class App extends Component {
   state = {};
 
   render() {
     return (
       <MuiThemeProvider>
-        <>
-          <Logo />
-          <h1>Start coding now</h1>
-        </>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+            </Switch>
+          </BrowserRouter>
+        </Provider>
       </MuiThemeProvider>
     );
   }
