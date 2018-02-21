@@ -76,7 +76,7 @@ in config/webpack.prod.config.js like this
 ```
 resolve: {
     alias: {
-    		    'react': 'preact-compat',
+    	  'react': 'preact-compat',
         'react-dom': 'preact-compat'
     }
 }
