@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devtool: "cheap-module-source-map",
   output: {
-    filename: './public/[name].bundle.js',
+    filename: 'public/[name].bundle.js',
     publicPath: ""
   },
   module: {

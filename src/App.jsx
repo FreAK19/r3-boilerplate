@@ -1,26 +1,25 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import {Provider} from 'react-redux';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Home from './routes/home';
 import './App.less';
 import store from './store';
 
-console.log(store)
 export default class App extends Component {
-  state = {};
+	state = {};
 
-  render() {
-    return (
-      <MuiThemeProvider>
-        <Provider store={store}>
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={Home}/>
-            </Switch>
-          </BrowserRouter>
-        </Provider>
-      </MuiThemeProvider>
-    );
-  }
+	render() {
+		return (
+			<MuiThemeProvider>
+				<Provider store={store}>
+					<BrowserRouter>
+						<Switch>
+							<Route exact path="/" component={Home} />
+						</Switch>
+					</BrowserRouter>
+				</Provider>
+			</MuiThemeProvider>
+		);
+	}
 }
