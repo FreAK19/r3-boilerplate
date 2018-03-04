@@ -56,7 +56,34 @@ const common = {
 						options: {
 							name: '[name].[ext]'
 						}
-					}
+					},
+
+					//  image optimization
+
+					{
+						loader: 'image-webpack-loader',
+						options: {
+							mozjpeg: {
+								progressive: true,
+								quality: 75
+							},
+
+							optipng: {
+								enabled: false,
+							},
+							pngquant: {
+								quality: '65-80',
+								speed: 4
+							},
+							gifsicle: {
+								interlaced: false,
+							},
+							// the webp option will enable WEBP
+							webp: {
+								quality: 75
+							}
+						}
+					},
 				]
 			},
 			{
@@ -99,6 +126,7 @@ module.exports = function (env) {
 			{
 				entry: {
 					app: PATH.app,
+					vendor: ["react"]
 				},
 			},
 			common,

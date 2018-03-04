@@ -13,7 +13,8 @@
     "react-hot-loader/babel",
     "@babel/plugin-proposal-object-rest-spread",
     "babel-plugin-transform-class-properties",
-    "syntax-dynamic-import"
+    "syntax-dynamic-import",
+		"transform-react-jsx-img-import"
   ],
   "env": {
     "test": {

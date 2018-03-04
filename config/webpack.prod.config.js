@@ -46,7 +46,14 @@ module.exports = {
 							options: {
 								plugins: [
 									require('postcss-flexbugs-fixes'),
-									require('autoprefixer')
+									require('autoprefixer'),
+									require('cssnano')({
+										preset: ['default', {
+											discardComments: {
+												removeAll: true,
+											},
+										}]
+									}),
 								]
 							}
 						}
@@ -74,7 +81,15 @@ module.exports = {
 							loader: "postcss-loader",
 							options: {
 								plugins: [
-									require('autoprefixer')
+									require('autoprefixer'),
+									require('postcss-flexbugs-fixes'),
+									require('cssnano')({
+										preset: ['default', {
+											discardComments: {
+												removeAll: true,
+											},
+										}]
+									}),
 								]
 							}
 						},
