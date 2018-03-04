@@ -1,26 +1,32 @@
 /*  eslint-disable  */
+
 const webpack = require('webpack');
-const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const AssetsPlugin = require('assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = {
+	mode: "production", //  webpack 4 mode production
+	devtool: "source-map", // source-maps enable
 	output: {
-		filename: 'js/[name].[hash:6].js',
-		chunkFilename: '[name].[chunkhash:6].js',
-		publicPath: ""
+		filename: 'js/[name].[hash:6].js', // filename for entry
+		chunkFilename: 'js/[name].[chunkhash:6].js', // filename for chunks
+		publicPath: "" // public path root/
 	},
+
 	stats: {
 		chunks: false,
 		reasons: true,
 		colors: true,
 		timings: true
 	},
+
 	module: {
 		rules: [
+			//  operate css files
+
 			{
 				test: /\.css$/,
 				exclude: /node_modules/,
@@ -48,6 +54,9 @@ module.exports = {
 					publicPath: '../'
 				})
 			},
+
+			//  operate less files
+
 			{
 				test: /\.less$/,
 				exclude: /node_modules/,
@@ -77,49 +86,53 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [
-		new webpack.DefinePlugin({
-			'process.env': {
-				'NODE_ENV': JSON.stringify('production')
+	// webpack 4 options
+
+	optimization: {
+		minimize: true, //  minimize
+		//  minimizer: [new UglifyWebpackPlugin()],
+		runtimeChunk: { //  file manifest
+			name: 'manifest'
+		},
+		splitChunks: {  //  code splitting
+			cacheGroups: {
+				vendor: {
+					test: /[\\/]node_modules[\\/]/,
+					chunks: 'all',
+					name: "vendor",
+					minChunks: 3,
+					enforce: true
+				}
 			}
-		}),
-		new CleanWebpackPlugin(['build']),
-		new AssetsPlugin({
-			path: path.resolve(__dirname, '../build'),
-			filename: 'assets.json',
-			prettyPrint: true
-		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor'
-		}),
+		}
+	},
+
+	performance: {
+		hints: "warning", // "error" or false are valid too
+		maxEntrypointSize: 50000, // in bytes, default 250k
+		maxAssetSize: 450000, // in bytes
+	},
+
+	plugins: [
+		new WebpackCleanupPlugin(), //  clear build folder
+		new WebpackNotifierPlugin({ title: 'Webpack' }), // webpack notify on build status
+
+		//  extract html file
+
 		new HtmlWebpackPlugin({
 			inject: true,
+			minify: { removeAttributeQuotes: true },
 			template: './index.html',
 			hash: true,
 			favicon: './src/favicon.ico',
-			pretty: true
 		}),
+
+		//  extract styles
 		new ExtractTextPlugin({
 			filename: './css/[name].[hash:6].css',
 			allChunks: true
 		}),
 		new webpack.optimize.ModuleConcatenationPlugin(),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false,
-				unused: true,
-				dead_code: true,
-				screw_ie8: true
-			},
-			mangle: {
-				screw_ie8: true
-			},
-			output: {
-				comments: false,
-				screw_ie8: true
-			},
-			sourceMap: true
-		}),
-		new BundleAnalyzerPlugin()
+		new BundleAnalyzerPlugin() // unalize bundle file
 	]
 };
